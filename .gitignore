@@ -5,3 +5,4 @@
 /lib/arduino_secrets/*
 /lib/arduino_secrets/arduino_secrets.h
 arduino_secrets.h
+.gitignore
