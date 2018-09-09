@@ -4,8 +4,15 @@
 #include <WiFi101.h>
 #include <SD.h>
 
-class MkrRequest {
 
+class MkrRequest {
+/**
+ * [printDirectory description]
+ * @method printDirectory
+ * @param  dir            [description]
+ * @param  di             [description]
+ * @param  client         [description]
+ */
 void printDirectory(File dir, String di,WiFiClient client);
 boolean dir(String path,WiFiClient client);
 boolean getDIo(String path,WiFiClient client);

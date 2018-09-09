@@ -4,6 +4,7 @@
 #include <SD.h>
 #include <WiFi101.h>
 
+/** [MkrRequest::printDirectory description] */
 void MkrRequest::printDirectory(File dir, String di,WiFiClient client) {
         String d=di;
         while (true) {
