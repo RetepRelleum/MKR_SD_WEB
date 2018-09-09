@@ -117,7 +117,14 @@ boolean MkrRequest::getData(String path,WiFiClient client){
 
                 }
                 return true;
-        }else return false;
+        }else return false;/**
+ * function um alle file als cvs fiel anzuzeigen
+ * http://mkr1000/mkr/dir()
+ * @method dir
+ * @param  path   url pfad zum Beispiel mkr/dir()
+ * @param  client WiFiClient für die Retourantwort
+ * @return        true wenn dir == mkr/dir() ansonsten false
+ */
 }
 
 boolean MkrRequest::parse(String path,WiFiClient client){
