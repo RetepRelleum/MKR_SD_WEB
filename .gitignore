@@ -1,0 +1,5 @@
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+./lib/arduino_secrets/arduino_secrets.h
