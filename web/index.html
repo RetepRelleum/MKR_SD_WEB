@@ -1,0 +1,217 @@
+<html dir="ltr"><head>
+
+        <title>SVG in Object</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/DO.js"></script>
+        <script type="text/javascript" src="js/DI.js"></script> 
+        <script type="text/javascript" src="js/AI.js"></script>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['corechart', 'calendar']});
+            google.charts.setOnLoadCallback(drawChartLine);
+            google.charts.setOnLoadCallback(drawChartData);
+            google.charts.setOnLoadCallback(drawChartDD);
+            var datum = new Date();
+            var dat = "LOG/" + datum.getFullYear() + ((datum.getMonth() < 9) ? "0" : "") + (datum.getMonth() + 1) + ((datum.getDate() < 10) ? "0" : "") + (datum.getDate()) + ".CSV";
+            function fx_z(p1, p2) {
+                switch (p2) {
+                    case 0:
+                        return (p1 / 0.5);
+                        break;
+                    case 1:
+                        return (p1 / 2.5);
+                        break;
+                    case 2:
+                        return (p1 / 0.5);
+                        break;
+                    case 3:
+                        return (p1 / 2.5);
+                        break;
+                    case 4:
+                        return (p1 / 0.5);
+                        break;
+                    case 5:
+                        return (p1 / 2.5);
+                        break;
+                    case 6:
+                        return (p1 / 0.5);
+                        break;
+                    default:
+                        return p1;
+                }
+            }
+
+            function drawChartDD() {
+                $.get('MKR/GETDATA(2)', function (csvString) {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('number', "zeit");
+                    data.addColumn('number', "data");
+                    var arr1 = csvString.split('\n');
+                    data.addRows(arr1.length);
+                    arr1.forEach(function (item1, index) {
+                        var arr = item1.split(",");
+                        data.setCell(index, 0, arr[0]);
+                        data.setCell(index, 1, arr[1]);
+                    });
+                    var options = {
+                        curveType: 'function',
+                        legend: {position: 'bottom'},
+                        vAxis: {title: 'Wert'},
+                        hAxis: {title: 'Zeit'}
+                    };
+                    var chart = new google.visualization.LineChart(document.getElementById('dd_chart'));
+                    chart.draw(data, options);
+                });
+            }
+            function drawChartLine() {
+                $.get(dat, function (csvString) {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('datetime', 'Datum');    
+                    data.addColumn('number', "0");
+                    data.addColumn('number', "1");
+                    data.addColumn('number', "2");
+                    data.addColumn('number', "3");
+                    data.addColumn('number', "4");
+                    data.addColumn('number', "5");
+                    data.addColumn('number', "6");
+                    var array = csvString.split("\n");
+                    data.addRows(array.length);
+                    for (i = 0; i < array.length; i++) {
+                        var row = array[i].split(",");
+                        var da = new Date();
+                        da = new Date(row[0]);
+                        data.setCell(i, 0, da);
+                        for (x = 1; x < row.length; x++) {
+                            data.setCell(i, x, fx_z(row[x], x - 1));
+                        }
+                    }
+
+                    var options = {
+                        title: 'Ueberschrift'.concat(" ").concat(datum.getDate()).concat(".").concat(datum.getMonth() + 1).concat(".").concat(datum.getFullYear()),
+                        curveType: 'function',
+                        legend: {position: 'bottom'},
+                        vAxis: {title: 'Wert'},
+                        hAxis: {title: 'Datum'}
+                    };
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                    chart.draw(data, options);
+                });
+            }
+
+            function drawChartData() {
+                $.get('MKR/DIR()', function (csvString) {
+                    var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+                    var array2 = [""];
+                    var datArray = [
+                        [new Date(), 1]
+                    ];
+                    var dataTable = new google.visualization.DataTable();
+                    dataTable.addColumn({
+                        type: 'date',
+                        id: 'Date'
+                    });
+                    dataTable.addColumn({
+                        type: 'number',
+                        id: 'Day'
+                    });
+                    datArray[0] = [new Date(), 1];
+                    dataTable.addRows(datArray);
+                    var options = {
+                        title: "Daten vorhanden",
+                        height: 350
+                    };
+                    google.visualization.events.addListener(chart, 'select', function () {
+                        var selection = chart.getSelection();
+                        if (selection.length) {
+                            var row = selection[0].row;
+                            if (row) {
+                                datum = new Date(selection[0].date);
+                                dat = "LOG/" + datum.getFullYear() + ((datum.getMonth() < 9) ? "0" : "") + (datum.getMonth() + 1) + ((datum.getDate() < 10) ? "0" : "") + (datum.getDate()) + ".CSV";
+                                drawChartLine();
+                            }
+                        }
+                    });
+                    csvString = csvString.substr(0, csvString.length - 2);
+                    array2 = csvString.split(",");
+                    lauf = 0;
+                    for (i = 0; i < array2.length; i++) {
+                        try {
+                            if (array2[i].endsWith(".CSV")) {
+                                array2[i] = array2[i].replace("LOG/", "");
+                                array2[i] = array2[i].replace("1\r\n", "");
+                                var datums = new Date(array2[i].substr(0, 4), array2[i].substr(4, 2) - 1, array2[i].substr(6, 2));
+                                if (datums.getFullYear() > 2016) {
+                                    datArray[lauf] = [datums, ((i % 2) === 0) ? 1 : -1];
+                                    lauf++;
+                                }
+                            }
+                        } catch (err) {
+
+                        }
+                    }
+                    dataTable.addRows(datArray);
+                    chart.draw(dataTable, options);
+                });
+            }
+
+            function interval() {
+                aISetValue();
+                dISetValue();
+                dOSetValue();
+            }
+
+            function onLoad() {
+                var i;
+                for (i = 0; i < 15; i++) {
+                    new DO(document.getElementById(String("do" + i)), i, "img/on.svg", "img/off.svg", "50");
+                }
+                for (i = 0; i < 15; i++) {
+                    new DI(document.getElementById(String("di" + i)), i, "img/on2.svg", "img/off2.svg", "50");
+                }
+                for (i = 0; i < 7; i++) {
+                    new AI(document.getElementById(String("ai" + i)), i, 10000, 50);
+                }
+                setInterval(interval, 2000);
+            }
+
+        </script>
+
+    </head>
+    <body onload="onLoad();" contenteditable="true">
+        <table> 
+            <script>
+                document.write('<table>');
+                document.write('<tr>');
+                var i;
+                for (i = 0; i < 15; i++) {
+                    document.write('<td><div id="do' + i + '"></div></td>');
+                }
+                document.write('</tr>');
+                document.write('<tr>');
+                for (i = 0; i < 15; i++) {
+                    document.write('<td><div id="di' + i + '"></div></td>');
+                }
+                document.write('</tr>');
+                document.write('<tr>');
+                for (i = 0; i < 7; i++) {
+                    document.write('<td><div id="ai' + i + '" ></div></td>');
+                }
+                document.write('</tr>');
+                document.write(' </table>');
+            </script>
+
+            <table  style="width: 100%"> 
+                <tr>
+                    <td><div id="curve_chart"></div></td> 
+                </tr> 
+                <tr>
+                    <td> <div id="calendar_basic"  ></div></td>  
+                </tr> 
+                <tr>
+                    <td> <div id="dd_chart"  ></div></td>  
+                </tr>
+            </table>
+    </body></html>
