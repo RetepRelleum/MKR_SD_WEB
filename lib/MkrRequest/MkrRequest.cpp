@@ -4,7 +4,7 @@
 #include <SD.h>
 #include <WiFi101.h>
 
-/** [MkrRequest::printDirectory description] */
+
 void MkrRequest::printDirectory(File dir, String di,WiFiClient client) {
         String d=di;
         while (true) {
@@ -117,7 +117,9 @@ boolean MkrRequest::getData(String path,WiFiClient client){
 
                 }
                 return true;
-        }else return false;/**
+        }else return false;
+
+/**
  * function um alle file als cvs fiel anzuzeigen
  * http://mkr1000/mkr/dir()
  * @method dir

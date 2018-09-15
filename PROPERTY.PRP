@@ -1,0 +1,11 @@
+csv=text/comma-separated-values
+css=text/css
+.js=text/javascript
+txt=text/plain
+rtx=text/richtext
+xml=text/xml
+xml=text/xml
+ico=image/x-icon
+svg=image/svg+xml
+bmp=image/bmp
+htm=text/html
