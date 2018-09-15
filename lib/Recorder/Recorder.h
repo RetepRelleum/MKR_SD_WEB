@@ -4,12 +4,12 @@
 #include <Arduino.h>
 
  class Recorder {
-   unsigned long timer=0;
-   unsigned long interval=1000*60;
+   long timer=-590000;
+   long interval=600000;
  public:
    void begin();
    void loop();
-   String unixtToString(uint32_t t, bool sommer = false);
+   String unixtToString(long t, bool sommer = false);
 
  };
 

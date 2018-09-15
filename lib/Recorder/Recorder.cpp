@@ -8,8 +8,8 @@ void Recorder::begin(){
 }
 
 void Recorder::loop(){
-
-        if ((timer+interval)<millis()) {
+        long a=millis();
+        if ((timer+interval)<a) {
                 timer+=interval;
                 String time=unixtToString(WiFi.getTime());
                 String fname="WEB/LOG/"+time.substring(0,10)+".CSV";
@@ -26,11 +26,11 @@ void Recorder::loop(){
         }
 }
 
-String Recorder::unixtToString(uint32_t t, bool sommer ) {
-        uint32_t tt = t;
-        uint32_t wochentag = ((t + 345600) % (604800)) / 86400;
+String Recorder::unixtToString(long t, bool sommer ) {
+        long tt = t;
+        long wochentag = ((t + 345600) % (604800)) / 86400;
         t += 3600;
-        int data [6] = {0, 0, 0, 0, 0, 0};
+        long data [6] = {0, 0, 0, 0, 0, 0};
         data[5] = t % 60; //sek
         t = t / 60;
         data[4] = t % 60; //min
@@ -39,13 +39,13 @@ String Recorder::unixtToString(uint32_t t, bool sommer ) {
         t = t / 24;
         data[0] = t / 365 + 1970; // Year
         data[2] = t % 365;
-        uint32_t ly;
+        long ly;
         for (ly = 1972; ly < data[0]; ly += 4) {
                 if (!(ly % 100) && (ly % 400)) continue;
                 --data[2];
         }
         if (data[2] < 0) data[2] += 365, --data[0];
-        static int const dm[2][12] = {
+        static long const dm[2][12] = {
                 { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
                 { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
         };
