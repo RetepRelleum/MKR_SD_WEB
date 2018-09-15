@@ -84,5 +84,6 @@ und sieht dann folgendermassen aus
 <img src="./web/img/off.svg"> oder <img src="./web/img/on.svg">
 
 <img src="./web/img/on2.svg" width=100 height=100> oder <img src="./web/img/off2.svg" width=100 height=100>
-
-<svg><rect width=100 height=100 stroke=gray fill=white></rect><g stroke=black><line x1=1 y1=20 x2=99 y2=20></line><line x1=1 y1=40 x2=99 y2=40></line><line x1=1 y1=60 x2=99 y2=60></line><line x1=1 y1=80 x2=99 y2=80 ></line></g><rect width=80 height=40 y=60 x="10" fill=blue></rect></svg>
+  <d1>
+<svg width=100 height=100 ><rect width=100 height=100 stroke=gray fill=white></rect><g stroke=black><line x1=1 y1=20 x2=99 y2=20></line><line x1=1 y1=40 x2=99 y2=40></line><line x1=1 y1=60 x2=99 y2=60></line><line x1=1 y1=80 x2=99 y2=80 ></line></g><rect width=80 height=40 y=60 x="10" fill=blue></rect></svg>
+<d1>
