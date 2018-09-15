@@ -10,8 +10,8 @@ SD Root
 * Web \\\\ Root Directory  des Webservers
   - LOG \\\\ Directory des logging tools
        - 20180825.CSV \\\\ Erstellt täglich ein File mit 5 Minuten Werte
- * JS \\\\ Directory für Javascript Files
- * MKR \\\\ Directory mit speziellen Befehlen
+  - JS \\\\ Directory für Javascript Files
+  - MKR \\\\ Directory mit speziellen Befehlen
 
 
 Webserver mit Zugriff auf alle File auf der SD Karte unter dem Directory WEB.
