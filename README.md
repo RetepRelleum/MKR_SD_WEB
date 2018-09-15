@@ -8,7 +8,7 @@ Diese Projekt beinhaltet einen Webserver mit Zugriff auf das Web Directory der S
 SD Root
 * PROPERTY.PRP \\\\ [File mit MIME-TYPE des Webserver](https://wiki.selfhtml.org/wiki/MIME-Type/%C3%9Cbersicht)
 * Web \\\\ Root Directory  des Webservers
- * LOG \\\\ Directory des logging tools
+  - LOG \\\\ Directory des logging tools
        - 20180825.CSV \\\\ Erstellt täglich ein File mit 5 Minuten Werte
  * JS \\\\ Directory für Javascript Files
  * MKR \\\\ Directory mit speziellen Befehlen
