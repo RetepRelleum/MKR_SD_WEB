@@ -1,4 +1,5 @@
-# Webserver für Arduino MKR1000 WIFI mit MKR SD Proto Shield
+# Webserver für Arduino
+## MKR1000 WIFI mit MKR SD Proto Shield
 
 Entweder man benutzt eine Cloude oder speichert die Daten lokal in einer SD Karte.
 
@@ -12,15 +13,12 @@ SD Root
  * JS \\\\ Directory für Javascript Files
  * MKR \\\\ Directory mit speziellen Befehlen
 
-|
-
-
 
 Webserver mit Zugriff auf alle File auf der SD Karte unter dem Directory WEB.
 Zusätzlich noch folgende Funktionen
 
-http://192.168.1.115/MKR/DIR() liest alle File auf der SD Karte ab dem Directory WEB als CSV File
-http://192.168.1.115/MKR/GETDIO()
+http://mkr/MKR/DIR() liest alle File auf der SD Karte ab dem Directory WEB als CSV File
+http://mkr/MKR/GETDIO()
 
 ![Alt text](./controllers_brief.svg)
 <img src="./web/img/off.svg">
