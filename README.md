@@ -25,8 +25,16 @@ Zusätzlich noch folgenden Funktionen
   - 0,1,0,0,1,1,0,1,0,0,0,1,1,1,1
 * http://mkr/MKR/SETDIO(pin,value) Setzt den Status des Digitalen Pins (0-14) des MKR100 mit value HIGH 1 or LOW 0 return 1 erfolgreich 0 nicht erfolgreich
   -1
-* http://mkr/MKR/GETAIO(pin) Liest den Status des Analogen Pin  (0-6) des MKR100 als CSV File Werten von 0-1023
-
+* http://mkr/MKR/GETAIO(pin) Liest den Wert des Analogen Pin (0-6) des MKR100 als CSV File Werten von 0-1023
+  - 143
+* http://mkr/MKR/GETAIO() Liest den Wert der Analogen Pins (0-6) des MKR100 als CSV File Werten von 0-1023
+  - 608,440,507,182,421,316,240
+* http://mkr/MKR/GETDATA(pin) Liest 512 Werte inkl. Zeit in Mikrosekunden des Analogen Pin (0-6) des MKR100 als CSV File Werten von 0-1023
+  - 0,466
+  - 422,440
+  - 844,360
+  - 1266,377
+  - ...
 
 ![Alt text](./controllers_brief.svg)
 <img src="./web/img/off.svg">
