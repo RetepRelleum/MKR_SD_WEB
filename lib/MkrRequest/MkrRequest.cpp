@@ -47,7 +47,7 @@ boolean MkrRequest::getDIo(String path,WiFiClient client){
                                 }
                         }
                 }else{
-                        client.println(diRead(path.toInt()));
+                        client.print(diRead(path.toInt()));
                 }
                 return true;
         }else return false;
@@ -80,15 +80,13 @@ boolean MkrRequest::getAIo(String path,WiFiClient client){
                 path.trim();
                 if (path.length()==0) {
                         for(int i=0; i<7; i++) {
-
-                                client.println(analogRead(i));
+                                client.print(analogRead(i));
                                 if (i<6) {
-                                        client.println(",");
+                                        client.print(",");
                                 }
                         }
                 }else{
-                        pMode(path.toInt(),INPUT);
-                        client.println(analogRead(path.toInt()));
+                        client.print(analogRead(path.toInt()));
                 }
                 return true;
         }else return false;
