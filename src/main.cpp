@@ -22,8 +22,6 @@ void setup() {
 
         webServer.begin();
         recorder.begin();
-
-
 }
 
 
