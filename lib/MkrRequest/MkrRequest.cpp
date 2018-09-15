@@ -9,7 +9,6 @@ void MkrRequest::printDirectory(File dir, String di,WiFiClient client) {
         String d=di;
         while (true) {
 
-                client.println("1");
                 File entry =  dir.openNextFile();
                 if (!entry) {
                         // no more files
@@ -42,9 +41,9 @@ boolean MkrRequest::getDIo(String path,WiFiClient client){
                 path.trim();
                 if (path.length()==0) {
                         for(int i=0; i<15; i++) {
-                                client.println(diRead(i));
+                                client.print(diRead(i));
                                 if (i<14) {
-                                        client.println(",");
+                                        client.print(",");
                                 }
                         }
                 }else{
