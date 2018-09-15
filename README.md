@@ -14,8 +14,7 @@ Diese Projekt beinhaltet einen Webserver mit Zugriff auf das Web Directory der S
     - MKR \\\\ Directory mit speziellen Befehlen
 
 
-Webserver mit Zugriff auf alle File auf der SD Karte unter dem Directory WEB.
-Zusätzlich noch folgenden Funktionen
+Zusätzlich hat der Webserver noch folgenden Funktionen.
 
 * http://mkr/MKR/DIR() liest alle File auf der SD Karte ab dem Directory WEB als CSV File
   - INDEX.HTM,IMG,IMG/OFF.SVG,IMG/OFF2.SVG,IMG/ON2.SVG,IMG/ON.SVG,IMG/OFF1.SVG,IMG/ON1.SVG,JS,JS/DO.JS,JS/DI.JS,JS/AI.JS,LOG,LOG/20180825.CSV,LOG/20180804.CSV,LOG/20180901.CSV,LOG/20180826.CSV,LOG/19700101.CSV,LOG/20180902.CSV,LOG/20180908.CSV,LOG/20180909.CSV,LOG/20180915.CSV,FAVICON.ICO,LOG.HTM,OS.HTM
@@ -35,6 +34,27 @@ Zusätzlich noch folgenden Funktionen
   - 844,360
   - 1266,377
   - ...
+
+Das Arduino Projekt besteht aus dem Komponenten:
+
+## WebServer
+Der Webserver stellt die Webserverfunktionalität zur Verfügung. Inkl. der oben erwähnten MKR Funktionalität welche in der Klasse MKRRequest definiert wurden.
+Um den Webserver starten zu können benenne das File arduino_secrets_.h in arduino_secrets.h um und ergänze die WIFI Zugangsdaten.
+## Recorder
+Der Recorder speichert alle 15 Minuten die Analogwerte in File YYYYMMDD.CSV
+## HTML
+Für die Darstellung auf einer Webseite stehen Javascript Klassen zur Verfügung.
+
+- DI
+- DO
+- AI
+### DI
+
+
+
+
+
+
 
 ![Alt text](./controllers_brief.svg)
 <img src="./web/img/off.svg">
