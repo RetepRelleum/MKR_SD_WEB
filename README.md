@@ -24,7 +24,7 @@ Zusätzlich noch folgenden Funktionen
 * http://mkr/MKR/GETDIO() Liest den Status der Digitalen Pin  (0-14) des MKR100 als CSV File
   - 0,1,0,0,1,1,0,1,0,0,0,1,1,1,1
 * http://mkr/MKR/SETDIO(pin,value) Setzt den Status des Digitalen Pins (0-14) des MKR100 mit value HIGH 1 or LOW 0 return 1 erfolgreich 0 nicht erfolgreich
-  -
+  -1
 
 ![Alt text](./controllers_brief.svg)
 <img src="./web/img/off.svg">
