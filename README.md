@@ -257,3 +257,4 @@ Es ist möglich mittels Google Chart die geloggten Daten darzustellen.
 ```
 
 mit folgendem Resultat
+<img src="./web/img/dummi2.png"> 
