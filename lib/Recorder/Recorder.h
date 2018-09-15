@@ -4,8 +4,8 @@
 #include <Arduino.h>
 
  class Recorder {
-   unsigned long timer=-53990000;
-   unsigned long interval=54000000;
+   unsigned long timer=0;
+   unsigned long interval=1000*60;
  public:
    void begin();
    void loop();
