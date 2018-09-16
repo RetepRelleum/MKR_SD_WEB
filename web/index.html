@@ -177,7 +177,7 @@
 
     function updat() {
       aISetValue();
-      dISetValue(); 
+      dISetValue();
       dOSetValue();
     }
 
@@ -193,6 +193,7 @@
         new AI(document.getElementById(String("ai" + i)), i, 10000, 50);
       }
       updat();
+      setInterval(updat(),1000*60);
     }
   </script>
 

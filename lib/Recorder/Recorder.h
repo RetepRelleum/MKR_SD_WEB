@@ -4,8 +4,10 @@
 #include <Arduino.h>
 
  class Recorder {
-   long timer=-590000;
-   long interval=600000;
+    long dtInMin=10;
+   long timer=-dtInMin*58*1000;
+   long interval=dtInMin*59*1000;
+
  public:
    void begin();
    void loop();

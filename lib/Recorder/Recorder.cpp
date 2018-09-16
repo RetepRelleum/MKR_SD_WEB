@@ -10,19 +10,21 @@ void Recorder::begin(){
 void Recorder::loop(){
         long a=millis();
         if ((timer+interval)<a) {
-                timer+=interval;
-                String time=unixtToString(WiFi.getTime());
-                String fname="WEB/LOG/"+time.substring(0,10)+".CSV";
-                fname.replace("-","");
-                Serial.println(fname);
-                File file=SD.open(fname,FILE_WRITE);
-                file.print(time);
-                for (int i=0; i<7; i++) {
-                        file.print(',');
-                        file.print(analogRead(i));
+                if (WiFi.getTime()%(dtInMin*60)<1) {
+                        timer+=interval;
+                        String time=unixtToString(WiFi.getTime());
+                        String fname="WEB/LOG/"+time.substring(0,10)+".CSV";
+                        fname.replace("-","");
+                        Serial.println(fname);
+                        File file=SD.open(fname,FILE_WRITE);
+                        file.print(time);
+                        for (int i=0; i<7; i++) {
+                                file.print(',');
+                                file.print(analogRead(i));
+                        }
+                        file.println();
+                        file.close();
                 }
-                file.println();
-                file.close();
         }
 }
 
